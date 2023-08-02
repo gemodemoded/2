@@ -1,0 +1,31 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+// Функция сравнения для сортировки слов в алфавитном порядке
+int compare_words(const void* a, const void* b) {
+    return strcmp(*(const char**)a, *(const char**)b);
+}
+
+int main() {
+    char* words[] = {
+        "banana",
+        "apple",
+        "orange",
+        "grape",
+        "kiwi"
+    };
+
+    int num_words = sizeof(words) / sizeof(words[0]);
+
+    // Сортировка слов
+    qsort(words, num_words, sizeof(char*), compare_words);
+
+    // Вывод отсортированных слов
+    for (int i = 0; i < num_words; i++) {
+        printf("%s ", words[i]);
+    }
+    // Output: apple banana grape kiwi orange
+
+    return 0;
+}
